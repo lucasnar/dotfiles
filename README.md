@@ -15,4 +15,16 @@ source .bash_profile
 gdot config status.showUntrackedFiles no
 ```
 
+## Usage
+
+Usage examples:
+
+```
+# start versioning .imgcat.sh
+gdot add .imgcat.sh
+gdot commit
+gdot status
+gdot push
+```
+
 Feel free to contact me at lucasnar@gmail.com if you have any questions. :)
