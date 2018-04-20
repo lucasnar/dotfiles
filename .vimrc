@@ -53,6 +53,9 @@ Plugin 'reewr/vim-monokai-phoenix'
 " Macvim light (theme)
 Plugin 'aunsira/macvim-light'
 
+" Solarized (theme)
+Plugin 'altercation/vim-colors-solarized'
+
 " Google
 Plugin 'szw/vim-g'
 
@@ -79,7 +82,8 @@ filetype plugin indent on    " required
 
 syntax on
 " colorscheme monokai-phoenix
-colorscheme macvim-light
+" colorscheme macvim-light
+colorscheme solarized
 set expandtab
 set shiftwidth=2
 set tabstop=2
