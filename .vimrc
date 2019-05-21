@@ -24,7 +24,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
 
 " Command-T
-Plugin 'wincent/command-t'
+" Plugin 'wincent/command-t'
 
 " CtrlP
 Plugin 'kien/ctrlp.vim'
@@ -62,6 +62,24 @@ Plugin 'szw/vim-g'
 " Vue
 Plugin 'posva/vim-vue'
 
+" Vim test
+Plugin 'janko-m/vim-test'
+
+" Alchemist (Elixir integration)
+Plugin 'slashmili/alchemist.vim'
+
+" Vim Tmux Navigator - Seamless navigation between Vim and Tmux
+Plugin 'christoomey/vim-tmux-navigator'
+
+" Vim Surround
+Plugin 'tpope/vim-surround'
+
+" Syntastic (Syntax checking for a bunch of languages)
+Plugin 'vim-syntastic/syntastic'
+
+" Rubocop (Ruby hints)
+Plugin 'ngmy/vim-rubocop'
+
 " Python's PEP8 recommends weird indentation rules
 " Plugin 'vim-python-pep8-indent' " Didn't work for some reason
 
@@ -82,8 +100,8 @@ filetype plugin indent on    " required
 
 syntax on
 " colorscheme monokai-phoenix
-" colorscheme macvim-light
-colorscheme solarized
+colorscheme macvim-light
+" colorscheme solarized
 set expandtab
 set shiftwidth=2
 set tabstop=2
@@ -95,6 +113,7 @@ set hlsearch
 set ruler
 set title
 set laststatus=2
+set backspace=2
 
 " Ignore case
 set ignorecase
@@ -103,8 +122,16 @@ set smartcase
 " Show partial command in status line
 set showcmd
 
+" Enable mouse interaction
 set mouse=a
-set backspace=2
+
+" Persistent undo
+set undofile
+set undodir=$HOME/.vim/undo
+
+set undolevels=1000
+set undoreload=10000
+
 autocmd BufWritePre * StripWhitespace
 cnoreabbrev t tabnew
 cnoreabbrev W w
@@ -118,7 +145,8 @@ cnoreabbrev ctbv ConqueTermVSplit bash
 nnoremap <silent> <Esc><Esc> <Esc>:nohlsearch<CR><Esc>
 
 " Easy NERDTree opening
-map <Leader>n :NERDTree<CR>
+noremap <Leader>f :NERDTree<CR>
+noremap <Leader>n :NERDTreeFind<CR>
 let NERDTreeWinPos = 'left'
 
 " New line adding
@@ -151,7 +179,7 @@ if executable('ag')
 endif
 nnoremap <Leader>a :Ack!<Space>
 
-" wildignore to ignore files in listings Command-T uses it
+" wildignore to ignore files in listings
 " Binary ignore
 set wildignore +=*.o,*.obj
 
@@ -178,3 +206,41 @@ nnoremap < :bp<CR>
 nnoremap > :bn<CR>
 
 set path+=**
+
+" Setup Elixir Umbrella test
+function! ElixirUmbrellaTransform(cmd) abort
+  if match(a:cmd, 'apps/') != -1
+    return substitute(a:cmd, 'mix test apps/\([^/]*/\)', 'cd apps/\1 \&\& mix test ', '')
+  else
+    return a:cmd
+  end
+endfunction
+
+let g:test#preserve_screen = 1
+let g:test#custom_transformations = {'elixir_umbrella': function('ElixirUmbrellaTransform')}
+let g:test#transformation = 'elixir_umbrella'
+
+" Vim-test key bindings
+nmap <silent> <leader>tt :TestNearest<CR>
+nmap <silent> <leader>tf :TestFile<CR>
+nmap <silent> <leader>ta :TestSuite<CR>
+nmap <silent> <leader>tl :TestLast<CR>
+nmap <silent> <leader>tv :TestVisit<CR>
+
+"" The Silver Searcher
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor --ignore node_modules -g ""'
+
+  " " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
+
+let g:vimrubocop_keymap = 0
+nmap <Leader>r :RuboCop<CR>
+
+" Parse Json (ruby dependent)
+map <leader>jt <Esc>:%!ruby -rjson -e "print JSON.pretty_generate(JSON.parse(ARGF.read))"<ESC>=%<CR>

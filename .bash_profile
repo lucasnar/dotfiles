@@ -7,14 +7,16 @@ set -o vi
 
 # Source other files.
 
-# Load RVM (as a function).
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-
 [[ -f "$HOME/.bashrc" ]] && source "$HOME/.bashrc"
 
 [[ -f "$HOME/.bash_aliases" ]] && source "$HOME/.bash_aliases"
 
+#git completion
 [[ -f "$HOME/git-completion.bash" ]] && source $HOME/git-completion.bash
+
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+    . `brew --prefix`/etc/bash_completion
+fi
 
 # Mostly for env variables I don't want to version control.
 [[ -f "$HOME/.local_bash_profile" ]] && source "$HOME/.local_bash_profile"
@@ -43,4 +45,13 @@ export VISUAL="vim"
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
 export HISTSIZE=42000
-export PS1="\[\033[34;m\]\w\[\033[32;m\]\$(parse_git_branch)\[\033[m\]\$ "
+export PS1="\[\033[34;m\]\w\[\033[32;m\]\$(parse_git_branch)\[\033[m\]\n\$ "
+
+. $HOME/.asdf/asdf.sh
+
+. $HOME/.asdf/completions/asdf.bash
+
+export PATH="/usr/local/sbin:$PATH"
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
