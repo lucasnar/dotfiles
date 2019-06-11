@@ -100,8 +100,8 @@ filetype plugin indent on    " required
 
 syntax on
 " colorscheme monokai-phoenix
-colorscheme macvim-light
-" colorscheme solarized
+" colorscheme macvim-light
+colorscheme solarized
 set expandtab
 set shiftwidth=2
 set tabstop=2
