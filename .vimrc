@@ -132,6 +132,11 @@ set undodir=$HOME/.vim/undo
 set undolevels=1000
 set undoreload=10000
 
+" For security reasons, as described here:
+" https://github.com/numirias/security/blob/master/doc/2019-06-04_ace-vim-neovim.md
+set modelines=0
+set nomodeline
+
 autocmd BufWritePre * StripWhitespace
 cnoreabbrev t tabnew
 cnoreabbrev W w
