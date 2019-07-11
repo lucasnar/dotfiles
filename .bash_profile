@@ -47,11 +47,11 @@ export LSCOLORS=ExFxBxDxCxegedabagacad
 export HISTSIZE=42000
 export PS1="\[\033[34;m\]\w\[\033[32;m\]\$(parse_git_branch)\[\033[m\]\n\$ "
 
-. $HOME/.asdf/asdf.sh
-
-. $HOME/.asdf/completions/asdf.bash
+# https://github.com/asdf-vm/asdf/issues/428
+# . $HOME/.asdf/asdf.sh
+# . $HOME/.asdf/completions/asdf.bash
+source `brew --prefix asdf`/asdf.sh
 
 export PATH="/usr/local/sbin:$PATH"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-
