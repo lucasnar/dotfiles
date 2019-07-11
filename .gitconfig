@@ -1,0 +1,8 @@
+[user]
+  name = Lucas Narciso
+  email = lucasnar@gmail.com
+[includeIf "gitdir:~/work/"]
+  path = ~/.gitconfig-work
+
+[commit]
+	gpgsign = true
