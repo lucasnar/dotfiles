@@ -31,6 +31,11 @@ alias drake='bundle exec rake db:migrate && RAILS_ENV=test bundle exec rake db:m
 alias upmaster='git checkout master && git pull && bundle drake && git checkout -'
 alias ralert="bin/rspec;alert" # MacOS dependent
 
-alias imgcat='~/.imgcat.sh'
-alias cl='clear'
-alias myip='curl ipecho.net/plain;echo'
+# Elixir/Phoenix
+alias iphx="iex -S mix phx.server"
+alias itest="iex -S mix test"
+
+alias imgcat='~/.imgcat.sh' # show an image right in the terminal
+alias myip='curl ipecho.net/plain;echo' # prints external ip
+
+
