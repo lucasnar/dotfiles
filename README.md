@@ -7,12 +7,15 @@ My personal dotfiles created based on this [Hacker News' thread](https://news.yc
 To my future self: to setup this dotfiles locally, run the following commands.
 
 ```
+# install git (e.g. brew install git)
 cd $HOME
 git clone --separate-git-dir=$HOME/.dotfiles https://github.com/lucasnar/dotfiles.git dotfiles-tmp
 rsync --recursive --verbose --exclude '.git' dotfiles-tmp/ $HOME/
 rm -rf dotfiles-tmp
 source .bash_profile
 gdot config status.showUntrackedFiles no
+# install wget (e.g. brew install wget)
+wget https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
 ```
 
 ## Usage
