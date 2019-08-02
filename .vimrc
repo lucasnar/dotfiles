@@ -98,10 +98,11 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
-syntax on
+syntax enable
 " colorscheme monokai-phoenix
 " colorscheme macvim-light
 colorscheme solarized
+set background=light " So I get the solarized light version by default
 set expandtab
 set shiftwidth=2
 set tabstop=2
