@@ -39,7 +39,7 @@ parse_git_branch() {
 # Env
 
 # Configure vim as the default editor.
-export EDITOR="vi -e"
+export EDITOR="vim"
 export VISUAL="vim"
 
 export CLICOLOR=1
