@@ -250,3 +250,10 @@ nmap <Leader>r :RuboCop<CR>
 
 " Parse Json (ruby dependent)
 map <leader>jt <Esc>:%!ruby -rjson -e "print JSON.pretty_generate(JSON.parse(ARGF.read))"<ESC>=%<CR>
+
+" Syntastic config
+" "active" mode: checks are made on save or open
+" Excluding SCSS files (which " need :SyntasticCheck to be called)
+let g:syntastic_mode_map = {
+    \ "mode": "active",
+    \ "passive_filetypes": ["scss"] }
