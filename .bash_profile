@@ -38,9 +38,9 @@ parse_git_branch() {
 
 # Env
 
-# Configure vim as the default editor.
-export EDITOR="vim"
-export VISUAL="vim"
+# Configure (neo) vim as the default editor.
+export EDITOR="nvim"
+export VISUAL="nvim"
 
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
