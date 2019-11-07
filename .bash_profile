@@ -45,6 +45,10 @@ export VISUAL="nvim"
 # Enable Erlang/Elixir shell history (https://hexdocs.pm/iex/IEx.html#module-shell-history)
 export ERL_AFLAGS="-kernel shell_history enabled"
 
+# Silence the bash deprecation warning on MacOS Catalina.
+# Don't wanna move to zsh, Mac! Please, let me use my good old bash!
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
 export HISTSIZE=42000
