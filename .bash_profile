@@ -42,6 +42,9 @@ parse_git_branch() {
 export EDITOR="nvim"
 export VISUAL="nvim"
 
+# Enable Erlang/Elixir shell history (https://hexdocs.pm/iex/IEx.html#module-shell-history)
+export ERL_AFLAGS="-kernel shell_history enabled"
+
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
 export HISTSIZE=42000
