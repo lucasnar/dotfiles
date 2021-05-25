@@ -1,6 +1,7 @@
 [user]
-  name = Lucas Narciso
-  email = lucasnar@gmail.com
+	name = Lucas Narciso
+	email = lucasnar@gmail.com
+	signingkey = 57F7E52C8BF1D035
 [includeIf "gitdir:~/work/"]
   path = ~/.gitconfig-work
 
@@ -9,3 +10,7 @@
 
 [core]
   excludesfile = ~/.global_gitignore
+[credential]
+	helper = osxkeychain
+[hub]
+	protocol = https
