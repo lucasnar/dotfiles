@@ -56,6 +56,12 @@ Plugin 'aunsira/macvim-light'
 " Solarized (theme)
 Plugin 'altercation/vim-colors-solarized'
 
+" Solarized (theme) with true color support
+Plugin 'lifepillar/vim-solarized8'
+
+" Nord theme
+Plugin 'arcticicestudio/nord-vim'
+
 " Google
 Plugin 'szw/vim-g'
 
@@ -101,7 +107,8 @@ filetype plugin indent on    " required
 syntax enable
 " colorscheme monokai-phoenix
 " colorscheme macvim-light
-colorscheme solarized
+" colorscheme solarized
+colorscheme nord
 set background=light " So I get the solarized light version by default
 set expandtab
 set shiftwidth=2
@@ -132,6 +139,13 @@ set undodir=$HOME/.vim/undo
 
 set undolevels=1000
 set undoreload=10000
+
+" set Vim-specific sequences for RGB colors
+" It is important to load this before the coloscheme solarized8
+" set termguicolors
+" let &t_8f = "\[38;2;%lu;%lu;%lum"
+" let &t_8b = "\[48;2;%lu;%lu;%lum"
+" colorscheme solarized8
 
 " For security reasons, as described here:
 " https://github.com/numirias/security/blob/master/doc/2019-06-04_ace-vim-neovim.md
