@@ -1,8 +1,8 @@
+alias ls='ls -alGH'
+
 # Git
 # (Yeah, I know, I should probably use git aliases,
 # but I didn't know it was a thing when I started this)
-alias ls='ls -a'
-alias la='ls -lah'
 alias g='git'
 alias gb='git branch'
 alias gs='git status'
@@ -12,6 +12,8 @@ alias gc='git checkout'
 alias gl='git log'
 alias gl1='git log -1'
 alias gpf='git push --force-with-lease'
+alias gpr='git pull --rebase'
+alias gammend-push-all='git add . && git commit --ammend --no-edit && gpf'
 
 # Vim
 # (Yeah, I frequently mistype ivm)
