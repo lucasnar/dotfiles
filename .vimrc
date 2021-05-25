@@ -271,3 +271,7 @@ map <leader>jt <Esc>:%!ruby -rjson -e "print JSON.pretty_generate(JSON.parse(ARG
 let g:syntastic_mode_map = {
     \ "mode": "active",
     \ "passive_filetypes": ["scss"] }
+
+" Copy filename to clipboard
+
+:nmap cp :let @* = expand("%:p")<CR>
