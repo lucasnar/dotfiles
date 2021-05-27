@@ -36,6 +36,15 @@ parse_git_branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
 
+
+# Delete local branches that were deleted on remote.
+# This would also delete a branch in which the last commit message contains the
+# follwing string ": gone]".
+# Based on https://stackoverflow.com/a/33548037
+gdelete_gone_branches() {
+  git fetch -p && for branch in $(git branch -vv | grep ': gone]' | awk '{print $1}'); do git branch -D $branch; done
+}
+
 # Env
 
 # Configure (neo) vim as the default editor.
