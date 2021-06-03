@@ -36,7 +36,6 @@ parse_git_branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
 
-
 # Delete local branches that were deleted on remote.
 # This would also delete a branch in which the last commit message contains the
 # follwing string ": gone]".
@@ -60,8 +59,11 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
+BLUE="\e[1;34m"
+GREEN="\e[1;32m"
+END_COLOR="\e[m"
+export PS1="$BLUE\w$GREEN\$(parse_git_branch)$END_COLOR\n\$ "
 export HISTSIZE=42000
-export PS1="\[\033[34;m\]\w\[\033[32;m\]\$(parse_git_branch)\[\033[m\]\n\$ "
 
 # https://github.com/asdf-vm/asdf/issues/428
 # . $HOME/.asdf/asdf.sh
