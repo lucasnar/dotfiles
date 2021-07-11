@@ -274,4 +274,7 @@ let g:syntastic_mode_map = {
 
 " Copy filename to clipboard
 
-:nmap cp :let @* = expand("%:p")<CR>
+:nmap cp :let @" = expand("%:p")
+
+autocmd BufWritePre */migrations/*.exs execute '! mix ecto.rollback --log-sql'
+autocmd BufWritePost */migrations/*.exs execute '! mix ecto.migrate --log-sql'
