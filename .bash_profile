@@ -65,10 +65,17 @@ END_COLOR="\e[m"
 export PS1="$BLUE\w$GREEN\$(parse_git_branch)$END_COLOR\n\$ "
 export HISTSIZE=42000
 
+# ctrl-e to trigger shell expansion (e.g. expand aliases)
+bind -m vi-insert '"\C-e": shell-expand-line'
+
 # https://github.com/asdf-vm/asdf/issues/428
-# . $HOME/.asdf/asdf.sh
-# . $HOME/.asdf/completions/asdf.bash
-source `brew --prefix asdf`/asdf.sh
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash
+# . /usr/local/opt/asdf/libexec/asdf.sh
+# . /usr/local/opt/asdf/etc/bash_completion.d/asdf.bash
+# export ASDF_DIR=$(brew --prefix asdf)
+# export ASDF_DATA_DIR=$(brew --prefix asdf)
+# source $ASDF_DATA_DIR/asdf.sh
 
 export PATH="/usr/local/sbin:$PATH"
 

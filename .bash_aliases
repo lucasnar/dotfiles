@@ -17,8 +17,9 @@ alias gammend-push-all='git add . && git commit --ammend --no-edit && gpf'
 
 # Vim
 # (Yeah, I frequently mistype ivm)
-alias v='vim'
-alias ivm='vim'
+alias v='nvim'
+alias ivm='nvim'
+alias vim='nvim'
 
 # Manage dotfiles
 alias gdot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
@@ -40,4 +41,4 @@ alias itest="iex -S mix test"
 alias imgcat='~/.imgcat.sh' # show an image right in the terminal
 alias myip='curl ipecho.net/plain;echo' # prints external ip
 
-
+alias eee=exit

@@ -81,10 +81,16 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'tpope/vim-surround'
 
 " Syntastic (Syntax checking for a bunch of languages)
-Plugin 'vim-syntastic/syntastic'
+" Plugin 'vim-syntastic/syntastic'
 
 " Rubocop (Ruby hints)
 Plugin 'ngmy/vim-rubocop'
+
+" GraphQL whatnot
+Plugin 'jparise/vim-graphql'
+
+" Pale night colorscheme
+Plugin 'drewtempelmeyer/palenight.vim'
 
 " Python's PEP8 recommends weird indentation rules
 " Plugin 'vim-python-pep8-indent' " Didn't work for some reason
@@ -108,8 +114,14 @@ syntax enable
 " colorscheme monokai-phoenix
 " colorscheme macvim-light
 " colorscheme solarized
-colorscheme nord
-set background=light " So I get the solarized light version by default
+" set background=light " So I get the solarized light version by default
+" colorscheme nord
+"
+"set background=dark " as required by palenight
+colorscheme palenight
+let g:lightline = { 'colorscheme': 'palenight' }
+let g:airline_theme = "palenight"
+
 set expandtab
 set shiftwidth=2
 set tabstop=2
@@ -272,9 +284,9 @@ let g:syntastic_mode_map = {
     \ "mode": "active",
     \ "passive_filetypes": ["scss"] }
 
-" Copy filename to clipboard
+" Copy filename to clipboard (doesn't work)
 
-:nmap cp :let @" = expand("%:p")
+nmap cp :let @" = expand("%:p")
 
-autocmd BufWritePre */migrations/*.exs execute '! mix ecto.rollback --log-sql'
-autocmd BufWritePost */migrations/*.exs execute '! mix ecto.migrate --log-sql'
+" autocmd BufWritePre */migrations/*.exs execute '! mix ecto.rollback'
+" autocmd BufWritePost */migrations/*.exs execute '! mix ecto.migrate'
